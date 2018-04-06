@@ -1,0 +1,144 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scritps/Player.gd" type="Script" id=1]
+[ext_resource path="res://scritps/Area2D.gd" type="Script" id=2]
+[ext_resource path="res://imgs/moneda.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="StreamTexture" id=2]
+
+flags = 4
+load_path = "res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex"
+
+[sub_resource type="CircleShape2D" id=3]
+
+custom_solver_bias = 0.0
+radius = 10.0
+
+[node name="Node2D" type="Node2D" index="0"]
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="." index="0" groups=[
+"Player",
+]]
+
+position = Vector2( 291.5, 168 )
+scale = Vector2( 1.20313, 1.15625 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Pickable" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D" index="0"]
+
+position = Vector2( 2.45999, 1.82763 )
+scale = Vector2( 2.38211, 2.3821 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="icon" type="Sprite" parent="KinematicBody2D" index="1"]
+
+position = Vector2( 1.23697, 0.669411 )
+texture = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Area2D" type="Area2D" parent="." index="1"]
+
+position = Vector2( 440.447, 342.364 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 2 )
+
+[node name="moneda" type="Sprite" parent="Area2D" index="0"]
+
+position = Vector2( 296.493, 101.739 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="1"]
+
+shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Area2D2" type="Area2D" parent="." index="2"]
+
+position = Vector2( 768.253, 169.253 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" index="0"]
+
+shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="moneda3" type="Sprite" parent="Area2D2" index="1"]
+
+position = Vector2( 0.609009, -1.39 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Area2D3" type="Area2D" parent="." index="3"]
+
+position = Vector2( 737.56, 446.722 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 2 )
+
+[node name="moneda2" type="Sprite" parent="Area2D3" index="0"]
+
+position = Vector2( -298.959, -104.52 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3" index="1"]
+
+shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
+
+[connection signal="body_entered" from="Area2D2" to="Area2D2" method="_on_Area2D_body_entered"]
+
+[connection signal="body_entered" from="Area2D3" to="Area2D3" method="_on_Area2D_body_entered"]
+
+
